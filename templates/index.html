@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bharti Collection | Premium Ethnic Wear</title>
+
+<!-- Luxe Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --primary: #210435;       /* Deep Luxury Velvet Purple */
+    --accent: #DFBA6B;        /* Clean Metallic Gold Accent */
+    --accent-gradient: linear-gradient(135deg, #ECC880 0%, #C39B4B 100%);
+    --text-dark: #1F1A24;
+    --text-muted: #665E6E;
+    --bg-light: #FAF8F5;       /* Warm Silk Cream Background */
+    --surface: #FFFFFF;
+    --card-shadow: 0 20px 40px rgba(33, 4, 53, 0.05);
+    --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-light);
+    overflow-x: hidden;
+    color: var(--text-dark);
+}
+
+/* CUSTOM ULTRA-SMOOTH SCROLLBAR */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-light);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 20px;
+}
+
+/* BLUR BACKGROUND SHAPE DECORATIONS */
+body::before, body::after {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: rgba(223, 186, 107, 0.06);
+    filter: blur(100px);
+    z-index: -1;
+    pointer-events: none;
+}
+body::before { top: 15%; left: -10%; }
+body::after { top: 60%; right: -10%; }
+
+/* PREMIUM STICKY NAVBAR */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background: rgba(33, 4, 53, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(223, 186, 107, 0.15);
+    transition: var(--transition);
+}
+
+.logo img {
+    height: 52px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #F1ECE4;
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: var(--transition);
+    position: relative;
+    padding: 6px 0;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 1.5px;
+    background: var(--accent);
+    transition: var(--transition);
+    transform: translateX(-50%);
+}
+
+.nav-links a:hover {
+    color: var(--accent);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* LUXURY HERO BANNER */
+header {
+    height: 100vh;
+    background: linear-gradient(rgba(17, 2, 28, 0.7), rgba(33, 4, 53, 0.85)),
+                url("{{ url_for('static', filename='images/logo.png') }}");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.hero {
+    max-width: 850px;
+    animation: slideUpFade 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 5rem;
+    font-weight: 600;
+    letter-spacing: 6px;
+    margin-bottom: 20px;
+    color: #FFFFFF;
+    background: linear-gradient(180deg, #FFFFFF 0%, #F3E6C9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    line-height: 1.9;
+    margin-bottom: 40px;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 300;
+}
+
+/* MATTE LUXURY BUTTON */
+.btn {
+    display: inline-block;
+    padding: 18px 45px;
+    background: transparent;
+    color: #FFFFFF;
+    border: 1px solid var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    transition: var(--transition);
+    position: relative;
+    z-index: 1;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background: var(--accent-gradient);
+    transition: var(--transition);
+    z-index: -1;
+}
+
+.btn:hover {
+    color: var(--primary) !important;
+    border-color: transparent;
+    box-shadow: 0 10px 30px rgba(223, 186, 107, 0.3);
+}
+
+.btn:hover::before {
+    width: 100%;
+}
+
+/* SECTION TITLES WITH MOTIFS */
+.section {
+    padding: 120px 8%;
+}
+
+.section-title {
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    font-size: 3rem;
+    font-weight: 400;
+    letter-spacing: 4px;
+    margin-bottom: 70px;
+    color: var(--primary);
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 1px;
+    background: var(--accent);
+    margin: 15px auto 0 auto;
+}
+
+/* DESIGNER PRODUCTS TILES */
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 40px;
+}
+
+.card {
+    background: var(--surface);
+    border: 1px solid rgba(33, 4, 53, 0.03);
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    transition: var(--transition);
+}
+
+.card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 30px 60px rgba(33, 4, 53, 0.12);
+}
+
+.card-img-container {
+    overflow: hidden;
+    position: relative;
+    height: 420px;
+    background: #F5F5F5;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card:hover img {
+    transform: scale(1.06);
+}
+
+.card-content {
+    padding: 30px 25px;
+    text-align: center;
+}
+
+.card-content h3 {
+    font-family: 'Cinzel', serif;
+    color: var(--primary);
+    font-size: 1.35rem;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.card-content p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: 15px;
+    font-weight: 400;
+}
+
+.price {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #B2822A;
+    margin-bottom: 25px;
+    letter-spacing: 0.5px;
+}
+
+/* ACTION CONTROLS */
+.share-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.share-buttons a,
+.share-buttons button {
+    flex: 1;
+    padding: 12px 20px;
+    background: transparent;
+    border: 1px solid #E5E0D8;
+    color: var(--text-dark);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.share-buttons a {
+    background: #128C7E;
+    color: #FFFFFF;
+    border-color: #128C7E;
+}
+
+.share-buttons a:hover {
+    background: #0b665c;
+    box-shadow: 0 8px 20px rgba(18, 140, 126, 0.25);
+}
+
+.share-buttons button:hover {
+    background: var(--primary);
+    color: #FFFFFF;
+    border-color: var(--primary);
+}
+
+/* SMOOTH MASONRY-STYLE GALLERY */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+}
+
+.gallery-item {
+    overflow: hidden;
+    height: 400px;
+    position: relative;
+    box-shadow: var(--card-shadow);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.gallery img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+.gallery-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(33, 4, 53, 0.2);
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.gallery-item:hover::after {
+    opacity: 1;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+/* STATEMENT BOUTIQUE ABOUT SCREEN */
+.about {
+    background: #FFFFFF;
+    padding: 90px 12%;
+    text-align: center;
+    border: 1px solid rgba(223, 186, 107, 0.25);
+    position: relative;
+}
+
+.about::before {
+    content: '“';
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Cinzel', serif;
+    font-size: 5rem;
+    color: rgba(223, 186, 107, 0.2);
+}
+
+.about p {
+    max-width: 850px;
+    margin: auto;
+    font-size: 1.25rem;
+    color: #38313D;
+    line-height: 2.1;
+    letter-spacing: 0.8px;
+    font-weight: 300;
+}
+
+/* ROYAL STORE DEETS MAP VIEWPORT PANEL */
+.contact {
+    background: linear-gradient(145deg, #150222 0%, #2A0845 100%);
+    color: #FFFFFF;
+    text-align: center;
+    padding: 120px 10%;
+    border-top: 4px solid var(--accent);
+}
+
+.contact p {
+    margin: 20px 0;
+    font-size: 1.15rem;
+    letter-spacing: 1.2px;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 300;
+}
+
+.contact p strong {
+    color: var(--accent);
+}
+
+.contact .btn {
+    margin-top: 35px;
+}
+
+/* PREMIUM FOOTER PANEL */
+footer {
+    background: #0E0117;
+    color: rgba(241, 236, 228, 0.4);
+    text-align: center;
+    padding: 35px;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+/* AMBIENT FLOATING CONTROLS */
+.whatsapp {
+    position: fixed;
+    bottom: 35px;
+    right: 35px;
+    width: 60px;
+    height: 60px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    color: white;
+    text-decoration: none;
+    z-index: 999;
+    box-shadow: 0 15px 30px rgba(37, 211, 102, 0.35);
+    transition: var(--transition);
+}
+
+.whatsapp:hover {
+    transform: scale(1.1) translateY(-5px);
+}
+
+/* GRAPHIC INTERACTIVE ANIMATIONS */
+@keyframes slideUpFade {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* HIGH-END ADAPTIVE RESPONSIVENESS */
+@media(max-width:992px){
+    .hero h1 { font-size: 3.8rem; }
+    .section { padding: 90px 5%; }
+}
+
+@media(max-width:768px){
+    .navbar { padding: 18px 5%; }
+    .nav-links { display: none; } /* Perfected cleaner presentation on handheld displays */
+    .hero h1 { font-size: 2.8rem; letter-spacing: 3px; }
+    .hero p { font-size: 1rem; }
+    .section-title { font-size: 2.2rem; }
+    .card-img-container { height: 380px; }
+}
+/* HERO SIDE IMAGES */
+
+header{
+    position: relative;
+    overflow: hidden;
+}
+
+.side-image{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    z-index:2;
+}
+
+.left-image{
+    left:5%;
+}
+
+.right-image{
+    right:5%;
+}
+
+.side-image img{
+    width:340px;
+    height:auto;
+    object-fit:contain;
+    animation: floatImage 4s ease-in-out infinite;
+}
+
+@keyframes floatImage{
+
+    0%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-15px);
+    }
+
+    100%{
+        transform:translateY(0px);
+    }
+
+}
+@media(max-width:992px){
+
+    .side-image img{
+        width:180px;
+    }
+
+}
+
+@media(max-width:768px){
+
+    .side-image{
+        display:none;
+    }
+
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo">
+        <img src="{{ url_for('static', filename='images/last.png') }}" alt="Bharti Collection Logo">
+    </div>
+    <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#collection">Collection</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<header id="home">
+
+    <!-- Left Image -->
+    <div class="side-image left-image">
+        <img src="{{ url_for('static', filename='images/left1.png') }}" alt="Left Image">
+    </div>
+
+    <!-- Center Content -->
+    <div class="hero">
+        <h1>Bharti Collection</h1>
+
+        <p>
+            ✨ Where Tradition Meets Elegance ✨
+            <br><br>
+            Designer Sarees • Premium Suits • Royal Lehengas • Stylish Kurtis
+        </p>
+
+        <a class="btn"
+           href="https://wa.me/919782458724?text=Hello%20Bharti%20Collection,%20I%20want%20more%20details"
+           target="_blank">
+            Shop on WhatsApp
+        </a>
+    </div>
+
+    <!-- Right Image -->
+    <div class="side-image right-image">
+        <img src="{{ url_for('static', filename='images/right.png') }}" alt="Right Image">
+    </div>
+
+</header>
+
+<section id="collection" class="section">
+    <h2 class="section-title">Our Collection</h2>
+    
+    <div class="products">
+        <div class="card">
+            <div class="card-img-container">
+                <img src="https://th.bing.com/th/id/OIP.emLIyU22iMjfQTiJ1I1ZgAHaNK?w=187&h=333&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3" alt="Designer Saree">
+            </div>
+            <div class="card-content">
+                <h3>Designer Sarees</h3>
+                <p>Premium Silk & Banarasi Sarees</p>
+                <div class="price">Starting ₹1,499</div>
+                <div class="share-buttons">
+                    <a href="https://wa.me/?text=Check%20this%20Saree" target="_blank">WhatsApp</a>
+                    <button onclick="copyLink()">Copy Link</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-img-container">
+                <img src="https://th.bing.com/th/id/OIP.aqYWGrLWL-z6kIi7-zRxKQHaKL?w=202&h=278&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3" alt="Elegant Suit">
+            </div>
+            <div class="card-content">
+                <h3>Elegant Suits</h3>
+                <p>Party Wear & Festive Collection</p>
+                <div class="price">Starting ₹1,299</div>
+                <div class="share-buttons">
+                    <a href="https://wa.me/?text=Check%20this%20Suit" target="_blank">WhatsApp</a>
+                    <button onclick="copyLink()">Copy Link</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-img-container">
+                <img src="https://medias.utsavfashion.com/media/catalog/product/cache/1/image/1000x/040ec09b1e35df139433887a97daa66f/e/m/embroidered-net-lehenga-in-sky-blue-v1-lht73.jpg" alt="Royal Lehenga">
+            </div>
+            <div class="card-content">
+                <h3>Royal Lehengas</h3>
+                <p>Bridal & Designer Collection</p>
+                <div class="price">Starting ₹4,999</div>
+                <div class="share-buttons">
+                    <a href="https://wa.me/?text=Check%20this%20Lehenga" target="_blank">WhatsApp</a>
+                    <button onclick="copyLink()">Copy Link</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-img-container">
+                <img src="https://th.bing.com/th/id/OIP.8RY3Mn53qm58frv67rZ23QHaMz?w=202&h=324&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3" alt="Stylish Kurti">
+            </div>
+            <div class="card-content">
+                <h3>Stylish Kurtis</h3>
+                <p>Daily Wear & Premium Kurtis</p>
+                <div class="price">Starting ₹699</div>
+                <div class="share-buttons">
+                    <a href="https://wa.me/?text=Check%20this%20Kurti" target="_blank">WhatsApp</a>
+                    <button onclick="copyLink()">Copy Link</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="gallery" class="section">
+    <h2 class="section-title">Fashion Gallery</h2>
+    <div class="gallery">
+        <div class="gallery-item"><img src="https://th.bing.com/th/id/OIP.DX2PyAm-3MHveNEOoMVm4AHaLH?w=202&h=303&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3"></div>
+        <div class="gallery-item"><img src="https://th.bing.com/th/id/OIP.cc2BcfWWtZAZz1vK90LLpgHaFg?w=202&h=150&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3"></div>
+        <div class="gallery-item"><img src="https://tse1.explicit.bing.net/th/id/OIP.3N4rlOkWaWymAcig3bWrfAHaHa?r=0&w=1200&h=1200&rs=1&pid=ImgDetMain&o=7&rm=3"></div>
+        <div class="gallery-item"><img src="https://tse4.mm.bing.net/th/id/OIP.MriCvcfjWGpb1kEVLy7UVwHaKL?r=0&pid=ImgDet&w=178&h=244&c=7&dpr=1.5&o=7&rm=3"></div>
+        <div class="gallery-item"><img src="https://cdn.shopify.com/s/files/1/0621/6751/5394/products/DK0656.1.jpg?v=1671776988"></div>
+        <div class="gallery-item"><img src="https://tse3.mm.bing.net/th/id/OIP.i7ydtJw0l_HkCniuh-FZHwHaKu?r=0&pid=ImgDet&w=178&h=257&c=7&dpr=1.5&o=7&rm=3"></div>
+        <div class="gallery-item"><img src="https://tse3.mm.bing.net/th/id/OIP.HGObTRilUfm4E4YPoctzOQHaJ2?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"></div>
+        <div class="gallery-item"><img src="https://tse1.mm.bing.net/th/id/OIP.NQ0UdvDWw74MfrVUGTctJwHaJQ?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"></div>
+    </div>
+</section>
+
+<section id="about" class="section">
+    <div class="about">
+        <h2 class="section-title">About Bharti Collection</h2>
+        <p>
+            Bharti Collection brings together timeless elegance and modern fashion.
+            Explore our curated range of Sarees, Suits, Lehengas, and Kurtis designed
+            to make every occasion truly special. We believe in delivering pure quality and satisfaction.
+        </p>
+    </div>
+</section>
+
+<section id="contact" class="contact">
+    <h2 class="section-title" style="color:white;">Visit Our Store</h2>
+    <p>📍 <strong>Address:</strong> 86/153, 8 Sector, Pratap Nagar, Sanganer, Jaipur</p>
+    <p>📞 <strong>Contact:</strong> +91 9782458724 , 7014336002</p>
+    <p>🕒 <strong>Timings:</strong> Open Daily: 10 AM - 9 PM</p>
+    <br>
+    <a class="btn" href="https://wa.me/919782458724?text=Hello%20Bharti%20Collection,%20I%20want%20more%20details" target="_blank">
+        Message on WhatsApp
+    </a>
+</section>
+
+<footer>
+    © 2026 Bharti Collection | All Rights Reserved
+</footer>
+
+<a class="whatsapp" href="https://wa.me/919782458724?text=Hello%20Bharti%20Collection,%20I%20want%20more%20details" target="_blank">
+    💬
+</a>
+
+<script>
+function copyLink(){
+    navigator.clipboard.writeText(window.location.href);
+    alert("Link Copied Successfully!");
+}
+</script>
+
+</body>
+</html>
