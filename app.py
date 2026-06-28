@@ -5,9 +5,9 @@ app = Flask(__name__)
 SHOP_INFO = {
     "shop_name": "Bharti Collection",
     "tagline": "Tradition Woven Into Every Thread",
-    "address": "123 Vaishali Nagar, Jaipur, Rajasthan 302021",
-    "phone": "+91 9352200732",
-    "whatsapp": "919352200732"
+    "address": "86/153, 8 Sector, Pratap Nagar, Sanganer, Jaipur",
+    "phone": "+91 9782458724",
+    "whatsapp": "919782458724"
 }
 
 PRODUCTS = [
